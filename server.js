@@ -6,13 +6,20 @@
 /* ***********************
  * Require Statements
  *************************/
-const express = require('express');
+const express = require("express");
 const app = express();
+const env = require("dotenv").config();
+const indexRoute = require("./routes/index");
 
-// Route to return someone's name
-app.get('/', (req, res) => {
-    res.send('John Doe');
-});
+/* ***********************
+ * View Engine
+ *************************/
+app.set("view engine", "ejs")
+
+/* ***********************
+ * Routes
+ *************************/
+app.use('/', indexRoute); // Home route
 
 /* ***********************
  * Local Server Information
