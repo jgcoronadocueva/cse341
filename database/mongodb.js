@@ -10,7 +10,16 @@ const initDb = callback => {
         console.log('Db is already initialized!');
         return callback(null, _db);
     }
-    mongoClient.connect(mongoURL)
+
+    // Adding options for TLS validation if necessary
+    const options = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        tls: true,
+        tlsAllowInvalidCertificates: true, // For debugging, remove in production
+    }
+
+    mongoClient.connect(mongoURL, options)
         .then(client => {
             _db = client.db('appDatabase');
             callback(null, _db);
