@@ -19,6 +19,11 @@ const indexRoute = require("./routes");
 app.use(bodyParser.json())
 
 /* ***********************
+ * View Engine and Templates
+ *************************/
+app.set("view engine", "ejs")
+
+/* ***********************
  * Routes
  *************************/
 app.use('/', indexRoute); // Home route
