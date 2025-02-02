@@ -54,7 +54,7 @@ contactsController.createContact = async (req, res) => {
 };
 
 /* ***********************
- * Update an existing contact
+ * Update an existing contact by ID
 *************************/
 contactsController.updateContact = async (req, res) => {
     try {
@@ -68,7 +68,7 @@ contactsController.updateContact = async (req, res) => {
 };
 
 /* ***********************
- * Delete a contact
+ * Delete a contact by ID
 *************************/
 contactsController.deleteContact = async (req, res) => {
     try {

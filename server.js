@@ -45,7 +45,7 @@ mongodb.initDb((err, mongodb) => {
     } else {
         app.locals.db = mongodb;
         console.log('Successfully connected to MongoDB');
-        app.listen(port, () => {
+        app.listen(port || 3000, () => {
             console.log(`Server is running on ${host}:${port}`);
         });
     }
