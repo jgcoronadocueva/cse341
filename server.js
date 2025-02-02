@@ -12,11 +12,13 @@ const mongodb = require('./database/mongodb');
 const bodyParser = require("body-parser")
 const app = express();
 const indexRoute = require("./routes");
+const cors = require('cors');
 
 /* ***********************
  * Middleware
  * ************************/
 app.use(bodyParser.json())
+app.use(cors({ origin: 'https://cse341-jgcc.onrender.com/' }));
 
 /* ***********************
  * View Engine and Templates
