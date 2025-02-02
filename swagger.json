@@ -5,7 +5,7 @@
     "description": "API to manage contacts. Supports creating, retrieving, updating, and deleting contacts.",
     "version": "1.0.0"
   },
-  "host": "localhost:5000",
+  "host": "cse341-jgcc.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
