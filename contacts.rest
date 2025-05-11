@@ -1,55 +1,65 @@
 # LOCAL HOST - DEVELOPMENT #
 
 ### Get all contacts (GET) 
-GET http://localhost:5000/contacts Accept: application/json
+GET http://localhost:5000/contacts 
+Accept: application/json
 
 ### Get Contact by ID using valid and existing ID (GET) 
-GET http://localhost:5000/contacts/678c6ed81e034ad4b04794b6 Accept: application/json
+GET http://localhost:5000/contacts/678c6ed81e034ad4b04794b6 
+Accept: application/json
 
 ### Get Contact by ID using non-existing ID (GET) 
-GET http://localhost:5000/contacts/65b5e8c4d6f3c9b1f0a1b2c3 Accept: application/json
+GET http://localhost:5000/contacts/65b5e8c4d6f3c9b1f0a1b2c3 
+Accept: application/json
 
 ### Create a new contact (POST) 
-POST http://localhost:5000/contacts Content-Type: application/json
+POST http://localhost:5000/contacts 
+Content-Type: application/json
 
 {
 "firstName": "Andrea", "lastName": "Ervin", "email": "andreaervin@gmail.com", "favoriteColor": "White", "birthday": "1993-09-07"
 }
 
 ### Update an existing contact (PUT) 
-PUT http://localhost:5000/contacts/679d60c91388ba937eccc45b Content-Type: application/json
+PUT http://localhost:5000/contacts/678c6ed81e034ad4b04794b6
+Content-Type: application/json
 
 {
 "email": "johnervin@example.com"
 }
 
 ### Delete a contact (DELETE) 
-DELETE http://localhost:5000/contacts/679d63f3432832180b72e91e
+DELETE http://localhost:5000/contacts/68203aff15e90ae5fab97e15
 
 # RENDER.COM - PRODUCTION #
 
 ### Get all contacts (GET) 
-GET https://cse341-jgcc.onrender.com/contacts Accept: application/json
+GET https://cse341-jgcc.onrender.com/contacts 
+Accept: application/json
 
 ### Get Contact by ID using valid and existing ID (GET) 
-GET https://cse341-jgcc.onrender.com/contacts/678c6ed81e034ad4b04794b6 Accept: application/json
+GET https://cse341-jgcc.onrender.com/contacts/678c6ed81e034ad4b04794b6 
+Accept: application/json
 
 ### Get Contact by ID using non-existing ID (GET) 
-GET https://cse341-jgcc.onrender.com/contacts/65b5e8c4d6f3c9b1f0a1b2c3 Accept: application/json
+GET https://cse341-jgcc.onrender.com/contacts/65b5e8c4d6f3c9b1f0a1b2c3 
+Accept: application/json
 
 ### Create a new contact (POST) 
-POST https://cse341-jgcc.onrender.com/contacts Content-Type: application/json
+POST https://cse341-jgcc.onrender.com/contacts 
+Content-Type: application/json
 
 {
 "firstName": "Daniel", "lastName": "Gallardo", "email": "johnervin@example.com", "favoriteColor": "Blue", "birthday": "1994-07-04"
 }
 
 ### Update an existing contact (PUT) 
-PUT https://cse341-jgcc.onrender.com/contacts/679d60c91388ba937eccc45b Content-Type: application/json
+PUT https://cse341-jgcc.onrender.com/contacts/68203b42a8d36e7f3f4d1143 
+Content-Type: application/json
 
 {
 "firstName": "John", "email": "johnervin@example.com", "favoriteColor": "Purple"
 }
 
 ### Delete a contact (DELETE) 
-DELETE https://cse341-jgcc.onrender.com/contacts/679d63f3432832180b72e91e
+DELETE https://cse341-jgcc.onrender.com/contacts/68203b67a8d36e7f3f4d1145
