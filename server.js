@@ -2,12 +2,12 @@
   * Require Statements
   *************************/
 const express = require("express");
-const env = require("dotenv").config();
 const cors = require("cors");
 const database = require('./database/connect');
 const bodyParser = require("body-parser");
 const indexRoute = require("./routes");
 const app = express();
+require("dotenv").config();
 
 /* ***********************
 * Middleware

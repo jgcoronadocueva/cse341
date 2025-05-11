@@ -3,14 +3,16 @@
 # and comments are unnecessary, but included for 
 # clarification.
 
-# node_modules is a storage folder for Node and
-# can get very large.
+# Node modules
 node_modules
 
-# .env file is for local use only. It contains
-# values not to be shared and most of the values
-# will be manually created by you or dynamically # created on the hosting server
+# Environment variables
 .env
 
-# .DS_Store is only for Mac users
+# System files
 **/.DS_Store
+
+# Build output
+dist/
+build/
+.eslintcache/
