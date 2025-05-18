@@ -8,4 +8,7 @@ router.get('/', baseController.buildHome);
 //contactsRoute
 router.use('/contacts', require('./contactsRoute'));
 
+//swaggerRoute
+router.use('/api-docs', require('./swaggerRoute'));
+
 module.exports = router;

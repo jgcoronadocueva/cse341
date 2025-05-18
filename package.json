@@ -17,7 +17,8 @@
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "mongodb": "^6.16.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.26.0",
@@ -25,6 +26,7 @@
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-prettier": "^5.4.0",
     "globals": "^16.0.0",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "swagger-autogen": "^2.23.7"
   }
 }
