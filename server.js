@@ -19,7 +19,7 @@ require("dotenv").config();
  * Middleware
  * ************************/
 app.use(bodyParser.json())
-app.use(cors({ origin: 'https://cse341-jgcc.onrender.com/' }));
+app.use(cors({ origin: '*' }));
 
 /* ***********************
  * View Engine and Templates
