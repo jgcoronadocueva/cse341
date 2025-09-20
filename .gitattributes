@@ -1,15 +1,9 @@
 # Treat all files as text by default and normalize line endings
 * text=auto
 
-# Force LF (Unix-style) for JSON files (package.json, package-lock.json)
-*.json text eol=lf
-
-# Force LF for JavaScript files
+# Force LF for JS and JSON
 *.js text eol=lf
-
-# Force LF for CSS and HTML files
-*.css text eol=lf
-*.html text eol=lf
+*.json text eol=lf
 
 # Force LF for Markdown and text files
 *.md text eol=lf

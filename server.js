@@ -6,6 +6,7 @@ const PORT = 3000;
 // Import routes
 const index = require("./routes");
 
+// Use the routes
 app.use("/", index);
 
 // Start server
