@@ -1,0 +1,25 @@
+# Treat all files as text by default and normalize line endings
+* text=auto
+
+# Force LF (Unix-style) for JSON files (package.json, package-lock.json)
+*.json text eol=lf
+
+# Force LF for JavaScript files
+*.js text eol=lf
+
+# Force LF for CSS and HTML files
+*.css text eol=lf
+*.html text eol=lf
+
+# Force LF for Markdown and text files
+*.md text eol=lf
+*.txt text eol=lf
+
+# Do not modify binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.tar.gz binary
