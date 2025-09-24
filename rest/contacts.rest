@@ -1,9 +1,21 @@
-### Get all contacts
+### Get all contacts - Local
 GET http://localhost:3000/contacts
 Content-Type: application/json
 
 ###
 
-### Get a single contact by ID
+### Get a single contact by ID - Local
 GET http://localhost:3000/contacts/678c6ed81e034ad4b04794b6
+Content-Type: application/json
+
+###
+
+### Get all contacts - Production
+GET https://cse341-jgcc.onrender.com/contacts
+Content-Type: application/json
+
+###
+
+### Get a single contact by ID - Production
+GET https://cse341-jgcc.onrender.com/contacts/678c6ed81e034ad4b04794b6
 Content-Type: application/json
