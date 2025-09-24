@@ -1,15 +1,20 @@
 // server.js
 const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require ('cors');
+const connectDB = require('./config/db');
+require('dotenv').config();
+
 const app = express();
-const PORT = 3000;
+const port = process.env.PORT || 3000;
 
-// Import routes
+// Hub for all routes
 const index = require("./routes");
-
-// Use the routes
 app.use("/", index);
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+// Connect DB and start server
+connectDB().then(() => {
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
 });
