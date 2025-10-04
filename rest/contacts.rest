@@ -42,7 +42,7 @@ GET https://cse341-jgcc.onrender.com/contacts
 Content-Type: application/json
 
 ### Get a single contact by ID
-GET https://cse341-jgcc.onrender.com/contacts/678c6ed81e034ad4b04794b6
+GET https://cse341-jgcc.onrender.com/contacts/68e10a66e106ce07d97100f0
 Content-Type: application/json
 
 ### Create a new contact
@@ -50,20 +50,22 @@ POST http://cse341-jgcc.onrender.com/contacts
 Content-Type: application/json
 
 { 
-    "firstName": "Andrea", 
-    "lastName": "Ervin", 
-    "email": "andreaervin@gmail.com", 
+    "firstName": "John", 
+    "lastName": "Doe", 
+    "email": "johndoe@gmail.com", 
     "favoriteColor": "White", 
     "birthday": "1993-09-07" 
 }
 
 ### Update an existing contact
-PUT http://cse341-jgcc.onrender.com/contacts/68e100dc25c36a377343fa2f 
+PUT http://cse341-jgcc.onrender.com/contacts/68e10a66e106ce07d97100f0
 Content-Type: application/json 
 
 { 
-    "email": "johnervin@example.com" 
+    "email": "jorgecoronado@example.com",
+    "favoriteColor": "Yellow",
+    "birthday": "1993-07-20"
 }
 
 ### Delete a contact
-DELETE http://cse341-jgcc.onrender.com/contacts/68e100dc25c36a377343fa2f
+DELETE http://cse341-jgcc.onrender.com/contacts/68e10a66e106ce07d97100f0
