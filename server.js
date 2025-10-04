@@ -8,6 +8,9 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Needed to parse JSON requests
+app.use(express.json());
+
 // Hub for all routes
 const index = require("./routes");
 app.use("/", index);

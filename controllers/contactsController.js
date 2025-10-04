@@ -1,22 +1,25 @@
 // controllers/contactsController.js
-const Contact = require('../models/Contact');
+const Contact = require("../models/Contact");
 
 const contactsController = {};
 
- // Retrieve all contacts
-contactsController.getContacts = async function (req, res) {
+/* ***********************
+ * Get all contacts
+ *************************/
+contactsController.getContacts = async (req, res) => {
   try {
-   
     const contacts = await Contact.find();
     res.status(200).json(contacts);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: "Server error" });
   }
 };
 
- // Retrieve a contacts by ID
-contactsController.getContactById = async function (req, res) {
+/* ***********************
+ * Get a contact by ID
+ *************************/
+contactsController.getContactById = async (req, res) => {
   try {
     const contact = await Contact.findById(req.params.id);
     if (!contact) {
@@ -26,6 +29,81 @@ contactsController.getContactById = async function (req, res) {
   } catch (err) {
     console.error(err);
     res.status(400).json({ error: "Invalid ID format" });
+  }
+};
+
+/* ***********************
+ * Create a new contact
+ *************************/
+contactsController.createContact = async (req, res) => {
+  try {
+    const contact = await Contact.create(req.body);
+    await contact.save();
+    res.status(201).json({ id: contact._id });
+  } catch (err) {
+    console.error(err);
+
+    // Handle Mongoose validation errors
+    if (err.name === "ValidationError") {
+      const errors = Object.keys(err.errors).map(
+        (field) => `\`${field}\` is required.`
+      );
+      return res
+        .status(400)
+        .json({ error: "Missing required fields", details: errors });
+    }
+
+    // Generic server error
+    res.status(500).json({ error: "Failed to create contact" });
+  }
+};
+
+/* ***********************
+ * Update an existing contact by ID
+ *************************/
+contactsController.updateContact = async (req, res) => {
+  try {
+    const contact = await Contact.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!contact) 
+      return res.status(404).json({ error: "Contact not found" });
+
+    res.status(204).json({ message: "Contact updated successfully" });
+  } catch (err) {
+    console.error(err);
+
+    // Handle Mongoose validation errors
+    if (err.name === "ValidationError") {
+      const errors = Object.keys(err.errors).map(
+        (field) => `\`${field}\` is required.`
+      );
+      
+      return res.status(400).json({ error: "Missing required fields", details: errors });
+    }
+
+    // Generic server error
+    res.status(500).json({ error: "Failed to update contact" });
+  }
+};
+
+/* ***********************
+ * Delete a contact by ID
+ *************************/
+contactsController.deleteContact = async (req, res) => {
+  try {
+    const contact = await Contact.findByIdAndDelete(req.params.id);
+    
+    if (!contact)
+      return res.status(404).json({ error: "Contact not found" });
+
+    res.status(200).json({ message: "Contact deleted successfully" });
+    
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to delete contact" });
   }
 };
 
