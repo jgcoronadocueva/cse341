@@ -20,7 +20,7 @@ contactsController.getContacts = async (req, res) => {
  *************************/
 contactsController.getContactById = async (req, res) => {
   try {
-    const contact = await Contact.findById(req.body._id || req.params.id);
+    const contact = await Contact.findById(req.params.id);
     if (!contact) {
       return res.status(404).json({ error: "Contact not found" });
     }
@@ -39,7 +39,7 @@ contactsController.createContact = async (req, res) => {
     const { firstName, lastName, email, favoriteColor, birthday } = req.body
     const contact = await Contact.create({ firstName, lastName, email, favoriteColor, birthday });
     await contact.save();
-    res.status(201).json({ id: contact._id, ...contact.toObject() });
+    res.status(201).json(contact);
   } catch (err) {
     console.error(err);
 
