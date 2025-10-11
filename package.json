@@ -21,6 +21,7 @@
     "express": "^5.1.0",
     "mongodb": "^6.20.0",
     "mongoose": "^8.18.2",
+    "mongoose-to-swagger": "^1.5.1",
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.1"
   },

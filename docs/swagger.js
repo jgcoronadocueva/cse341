@@ -1,5 +1,9 @@
+// swagger.js
 const swaggerAutogen = require("swagger-autogen");
+const mongooseToSwagger = require('mongoose-to-swagger');
 const Contact = require("../models/Contact");
+
+const contactSchema = mongooseToSwagger(Contact);
 
 const outputFile = "./docs/swagger-output.json";
 const endPointsFiles = ["./routes/index.js"];
@@ -19,7 +23,10 @@ const doc = {
     },
     host: host,
     // Uses secure HTTP protocol when in production
-    schemes: isProduction ? ["https"] : ["http"]
+    schemes: isProduction ? ["https"] : ["http"],
+    definitions: {
+      Contact: contactSchema
+    }
 };
 
 const options = {

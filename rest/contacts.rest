@@ -1,71 +1,111 @@
+// contacts.rest
+
+// ==========================
 // LOCAL ENVIRONMENT
+// ==========================
 
-### Get all contacts
-GET http://localhost:3000/contacts
+//  Base URL variable
+@baseURL = http://localhost:3000
+
+###
+//  Test 1: Get all contacts
+GET {{baseURL}}/contacts
 Content-Type: application/json
 
-### Get a single contact by ID
-GET http://localhost:3000/contacts/68e10a66e106ce07d97100f0
+### 
+//  Test 2: Create a new contact successfully
+# @name createContactRequest
+POST {{baseURL}}/contacts
 Content-Type: application/json
 
-### Create a new contact
-POST http://localhost:3000/contacts 
-Content-Type: application/json
-
-{ 
-    "firstName": "John", 
-    "lastName": "Doe", 
-    "email": "johndoe@gmail.com", 
-    "favoriteColor": "White", 
-    "birthday": "1993-09-07" 
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johndoe@gmail.com",
+    "favoriteColor": "White",
+    "birthday": "1993-09-07"
 }
 
-### Update an existing contact
-PUT http://localhost:3000/contacts/68e10a66e106ce07d97100f0
-Content-Type: application/json 
+### 
+//  Define variable from the response of the named request
+@createdContactId = {{createContactRequest.response.body.id}}
 
-{ 
+### 
+//  Test 3: Get the contact created in Test 2
+GET {{baseURL}}/contacts/{{createdContactId}}
+Content-Type: application/json
+
+###
+// Test 4: Update the contact created in Test 2
+PUT {{baseURL}}/contacts/{{createdContactId}}
+Content-Type: application/json
+
+{
     "email": "jorgecoronado@example.com",
     "favoriteColor": "Yellow",
     "birthday": "1993-07-20"
 }
 
-### Delete a contact
-DELETE http://localhost:3000/contacts/68e10a66e106ce07d97100f0
+###
+// Test 5: Delete the contact created in Test 2
+DELETE {{baseURL}}/contacts/{{createdContactId}}
+
+###
+// Test 6: Attempt to get the deleted contact (should return 404)
+GET {{baseURL}}/contacts/{{createdContactId}}
 
 
 
+// ==========================
 // PRODUCTION ENVIRONMENT
+// ==========================
 
-### Get all contacts
-GET https://cse341-jgcc.onrender.com/contacts
+//  Base URL variable
+@baseURLProd = https://cse341-jgcc.onrender.com
+
+###
+//  Test 1: Get all contacts
+GET {{baseURLProd}}/contacts
 Content-Type: application/json
 
-### Get a single contact by ID
-GET https://cse341-jgcc.onrender.com/contacts/68e10a66e106ce07d97100f0
+### 
+//  Test 2: Create a new contact successfully
+# @name createContactRequest
+POST {{baseURLProd}}/contacts
 Content-Type: application/json
 
-### Create a new contact
-POST http://cse341-jgcc.onrender.com/contacts 
-Content-Type: application/json
-
-{ 
-    "firstName": "John", 
-    "lastName": "Doe", 
-    "email": "johndoe@gmail.com", 
-    "favoriteColor": "White", 
-    "birthday": "1993-09-07" 
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johndoe@gmail.com",
+    "favoriteColor": "White",
+    "birthday": "1993-09-07"
 }
 
-### Update an existing contact
-PUT http://cse341-jgcc.onrender.com/contacts/68e10a66e106ce07d97100f0
-Content-Type: application/json 
+### 
+//  Define variable from the response of the named request
+@createdContactId = {{createContactRequest.response.body.id}}
 
-{ 
+### 
+//  Test 3: Get the contact created in Test 2
+GET {{baseURLProd}}/contacts/{{createdContactId}}
+Content-Type: application/json
+
+###
+// Test 4: Update the contact created in Test 2
+PUT {{baseURLProd}}/contacts/{{createdContactId}}
+Content-Type: application/json
+
+{
     "email": "jorgecoronado@example.com",
     "favoriteColor": "Yellow",
     "birthday": "1993-07-20"
 }
 
-### Delete a contact
-DELETE http://cse341-jgcc.onrender.com/contacts/68e10a66e106ce07d97100f0
+###
+// Test 5: Delete the contact created in Test 2
+DELETE {{baseURLProd}}/contacts/{{createdContactId}}
+
+###
+// Test 6: Attempt to get the deleted contact (should return 404)
+GET {{baseURLProd}}/contacts/{{createdContactId}}
