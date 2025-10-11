@@ -1,6 +1,5 @@
 // controllers/contactsController.js
 const Contact = require("../models/Contact");
-
 const contactsController = {};
 
 /* ***********************
@@ -21,7 +20,7 @@ contactsController.getContacts = async (req, res) => {
  *************************/
 contactsController.getContactById = async (req, res) => {
   try {
-    const contact = await Contact.findById(req.params.id);
+    const contact = await Contact.findById(req.params.contact_id);
     if (!contact) {
       return res.status(404).json({ error: "Contact not found" });
     }
@@ -37,7 +36,8 @@ contactsController.getContactById = async (req, res) => {
  *************************/
 contactsController.createContact = async (req, res) => {
   try {
-    const contact = await Contact.create(req.body);
+    const { firstName, lastName, email, favoriteColor, birthday } = req.body
+    const contact = await Contact.create({ firstName, lastName, email, favoriteColor, birthday });
     await contact.save();
     res.status(201).json({ id: contact._id });
   } catch (err) {
@@ -63,9 +63,10 @@ contactsController.createContact = async (req, res) => {
  *************************/
 contactsController.updateContact = async (req, res) => {
   try {
+    const { firstName, lastName, email, favoriteColor, birthday } = req.body;
     const contact = await Contact.findByIdAndUpdate(
-      req.params.id,
-      req.body,
+      req.params.contact_id,
+      { firstName, lastName, email, favoriteColor, birthday },
       { new: true, runValidators: true }
     );
     if (!contact) 
@@ -94,7 +95,7 @@ contactsController.updateContact = async (req, res) => {
  *************************/
 contactsController.deleteContact = async (req, res) => {
   try {
-    const contact = await Contact.findByIdAndDelete(req.params.id);
+    const contact = await Contact.findByIdAndDelete(req.params.contact_id);
     
     if (!contact)
       return res.status(404).json({ error: "Contact not found" });

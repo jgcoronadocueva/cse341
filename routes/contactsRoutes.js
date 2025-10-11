@@ -8,15 +8,15 @@ const contactsController = require("../controllers/contactsController");
 router.get("/", contactsController.getContacts);
 
 // Get a single contact by ID
-router.get("/:id", contactsController.getContactById);
+router.get("/:contact_id", contactsController.getContactById);
 
 // Create a new contact
 router.post('/', contactsController.createContact);
 
 // Update a contact information by ID
-router.put('/:id', contactsController.updateContact);
+router.put('/:contact_id', contactsController.updateContact);
 
 // Delete a single contact by ID
-router.delete('/:id', contactsController.deleteContact);
+router.delete('/:contact_id', contactsController.deleteContact);
 
 module.exports = router;

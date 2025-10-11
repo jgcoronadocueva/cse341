@@ -2,7 +2,8 @@
 const baseController = {};
 
 baseController.getHome = function (req, res) {
-    res.send("Gisella Galarza");
+  /* #swagger.ignore = true */
+  res.render("index", { environment: process.env.NODE_ENV });
 };
 
 module.exports = baseController;

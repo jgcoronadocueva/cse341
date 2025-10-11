@@ -4,9 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js",
-    "start": "node server.js"
+    "swagger:prod": "node ./docs/swagger.js",
+    "swagger:dev": "node --require dotenv/config ./docs/swagger.js",
+    "dev": "pnpm run swagger:dev && nodemon --require dotenv/config server.js",
+    "start": "pnpm run swagger:prod && node server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,9 +17,12 @@
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
     "mongodb": "^6.20.0",
-    "mongoose": "^8.18.2"
+    "mongoose": "^8.18.2",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
