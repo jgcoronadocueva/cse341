@@ -20,7 +20,7 @@ contactsController.getContacts = async (req, res) => {
  *************************/
 contactsController.getContactById = async (req, res) => {
   try {
-    const contact = await Contact.findById(req.params.id);
+    const contact = await Contact.findById(req.params.id || req.params._id);
     if (!contact) {
       return res.status(404).json({ error: "Contact not found" });
     }
@@ -39,7 +39,7 @@ contactsController.createContact = async (req, res) => {
     const { firstName, lastName, email, favoriteColor, birthday } = req.body
     const contact = await Contact.create({ firstName, lastName, email, favoriteColor, birthday });
     await contact.save();
-    res.status(201).json(contact);
+    res.status(201).json({ id: contact._id, ...contact.toObject() });
   } catch (err) {
     console.error(err);
 
@@ -65,7 +65,7 @@ contactsController.updateContact = async (req, res) => {
   try {
     const { firstName, lastName, email, favoriteColor, birthday } = req.body;
     const contact = await Contact.findByIdAndUpdate(
-      req.params.id,
+      req.params.id || req.params._id,
       { firstName, lastName, email, favoriteColor, birthday },
       { new: true, runValidators: true }
     );
@@ -95,7 +95,7 @@ contactsController.updateContact = async (req, res) => {
  *************************/
 contactsController.deleteContact = async (req, res) => {
   try {
-    const contact = await Contact.findByIdAndDelete(req.params.id);
+    const contact = await Contact.findByIdAndDelete(req.params.id || req.params._id);
     
     if (!contact)
       return res.status(404).json({ error: "Contact not found" });

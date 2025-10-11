@@ -64,12 +64,12 @@
         }
       }
     },
-    "/contacts/{contact_id}": {
+    "/contacts/{id}": {
       "get": {
         "description": "",
         "parameters": [
           {
-            "name": "contact_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -91,7 +91,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "contact_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -140,7 +140,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "contact_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
