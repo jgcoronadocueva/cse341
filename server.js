@@ -3,6 +3,9 @@ const express = require('express');
 const cors = require ('cors');
 const connectDB = require('./config/db');
 
+// Allow requests from all origins
+app.use(cors());
+
 const app = express();
 
 // Set EJS as the template engine

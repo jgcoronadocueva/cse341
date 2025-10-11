@@ -46,12 +46,17 @@ Content-Type: application/json
     "birthday": "1993-07-20"
 }
 
+### 
+//  Test 5: Check the contact updated in Test 3
+GET {{baseURL}}/contacts/{{createdContactId}}
+Content-Type: application/json
+
 ###
-// Test 5: Delete the contact created in Test 2
+// Test 6: Delete the contact created in Test 2
 DELETE {{baseURL}}/contacts/{{createdContactId}}
 
 ###
-// Test 6: Attempt to get the deleted contact (should return 404)
+// Test 7: Attempt to get the deleted contact (should return 404)
 GET {{baseURL}}/contacts/{{createdContactId}}
 
 
@@ -102,10 +107,15 @@ Content-Type: application/json
     "birthday": "1993-07-20"
 }
 
+### 
+//  Test 5: Check the contact updated in Test 3
+GET {{baseURLProd}}/contacts/{{createdContactId}}
+Content-Type: application/json
+
 ###
-// Test 5: Delete the contact created in Test 2
+// Test 6: Delete the contact created in Test 2
 DELETE {{baseURLProd}}/contacts/{{createdContactId}}
 
 ###
-// Test 6: Attempt to get the deleted contact (should return 404)
+// Test 7: Attempt to get the deleted contact (should return 404)
 GET {{baseURLProd}}/contacts/{{createdContactId}}
