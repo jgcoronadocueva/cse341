@@ -39,7 +39,7 @@ contactsController.createContact = async (req, res) => {
     const { firstName, lastName, email, favoriteColor, birthday } = req.body
     const contact = await Contact.create({ firstName, lastName, email, favoriteColor, birthday });
     await contact.save();
-    res.status(201).json({ id: contact._id });
+    res.status(201).json(contact);
   } catch (err) {
     console.error(err);
 
