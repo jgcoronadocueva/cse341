@@ -36,10 +36,25 @@ contactsController.getContactById = async (req, res) => {
  *************************/
 contactsController.createContact = async (req, res) => {
   try {
-    const { firstName, lastName, email, favoriteColor, birthday } = req.body
-    const contact = await Contact.create({ firstName, lastName, email, favoriteColor, birthday });
+    const { firstName, lastName, email, favoriteColor, birthday } = req.body;
+    const contact = await Contact.create({
+      firstName,
+      lastName,
+      email,
+      favoriteColor,
+      birthday,
+    });
     await contact.save();
-    res.status(201).json(contact);
+    console.log("Sending response:", {
+      message: "Contact created successfully",
+      contactId: contact._id,
+      contact,
+    });
+    res.status(201).json({
+      message: "Contact created successfully",
+      contactId: contact._id,
+      contact,
+    });
   } catch (err) {
     console.error(err);
 
@@ -64,12 +79,12 @@ contactsController.createContact = async (req, res) => {
 contactsController.updateContact = async (req, res) => {
   try {
     const { firstName, lastName, email, favoriteColor, birthday } = req.body;
-    const contact = await Contact.findByIdAndUpdate(req.params.id,
+    const contact = await Contact.findByIdAndUpdate(
+      req.params.id,
       { firstName, lastName, email, favoriteColor, birthday },
       { new: true, runValidators: true }
     );
-    if (!contact) 
-      return res.status(404).json({ error: "Contact not found" });
+    if (!contact) return res.status(404).json({ error: "Contact not found" });
 
     res.status(204).json({ message: "Contact updated successfully" });
   } catch (err) {
@@ -80,8 +95,10 @@ contactsController.updateContact = async (req, res) => {
       const errors = Object.keys(err.errors).map(
         (field) => `\`${field}\` is required.`
       );
-      
-      return res.status(400).json({ error: "Missing required fields", details: errors });
+
+      return res
+        .status(400)
+        .json({ error: "Missing required fields", details: errors });
     }
 
     // Generic server error
@@ -95,12 +112,10 @@ contactsController.updateContact = async (req, res) => {
 contactsController.deleteContact = async (req, res) => {
   try {
     const contact = await Contact.findByIdAndDelete(req.params.id);
-    
-    if (!contact)
-      return res.status(404).json({ error: "Contact not found" });
+
+    if (!contact) return res.status(404).json({ error: "Contact not found" });
 
     res.status(200).json({ message: "Contact deleted successfully" });
-    
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to delete contact" });
