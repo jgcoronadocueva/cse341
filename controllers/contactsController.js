@@ -45,15 +45,10 @@ contactsController.createContact = async (req, res) => {
       birthday,
     });
     await contact.save();
-    console.log("Sending response:", {
-      message: "Contact created successfully",
-      contactId: contact._id,
-      contact,
-    });
+
     res.status(201).json({
       message: "Contact created successfully",
-      contactId: contact._id,
-      contact,
+      id: contact._id
     });
   } catch (err) {
     console.error(err);

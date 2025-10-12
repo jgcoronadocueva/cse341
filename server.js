@@ -7,14 +7,14 @@ const app = express();
 // Allow requests from all origins
 app.use(cors());
 
+// Needed to parse JSON requests
+app.use(express.json());
+
 // Set EJS as the template engine
 app.set("view engine", "ejs");
 
 // Set the folder where templates are stored
 app.set("views", "./views");
-
-// Needed to parse JSON requests
-app.use(express.json());
 
 // Hub for all routes
 const index = require("./routes");
